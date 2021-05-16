@@ -1,6 +1,5 @@
 package com.tomveselka.uniconnector.httpRequests;
 
-import java.awt.SecondaryLoop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;

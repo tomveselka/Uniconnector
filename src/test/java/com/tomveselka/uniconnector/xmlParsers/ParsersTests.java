@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.*;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.xml.sax.SAXException;
 
 import com.tomveselka.uniconnector.httpRequests.StolenDocumentsRequest;
+import com.tomveselka.uniconnector.xmlParsers.ParseStolenDocumentsXml;
 
 
 

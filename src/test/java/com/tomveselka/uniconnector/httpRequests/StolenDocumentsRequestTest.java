@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.tomveselka.uniconnector.httpRequests.StolenDocumentsRequest;
 import com.tomveselka.uniconnector.utils.RegistersEndpoints;
 
 //stolen OP 114963206 114963209 114963213 114963222
