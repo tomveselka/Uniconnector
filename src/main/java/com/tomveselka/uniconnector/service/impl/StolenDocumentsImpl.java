@@ -11,6 +11,7 @@ import org.xml.sax.SAXException;
 import com.tomveselka.uniconnector.httpRequests.StolenDocumentsRequest;
 import com.tomveselka.uniconnector.xmlParsers.ParseStolenDocumentsXml;
 
+
 public class StolenDocumentsImpl {
 	@Autowired
 	StolenDocumentsRequest request;
@@ -18,7 +19,7 @@ public class StolenDocumentsImpl {
 	ParseStolenDocumentsXml parsers;
 
 	public String verifyOneDocument(String number, String type)
-			throws URISyntaxException, IOException, InterruptedException, SAXException, ParserConfigurationException {
+			throws URISyntaxException, IOException, InterruptedException, ParserConfigurationException, SAXException{
 		String result;
 		result = parsers.parseResponse(request.checkStolenDocumentsDatabase(number, type));
 
