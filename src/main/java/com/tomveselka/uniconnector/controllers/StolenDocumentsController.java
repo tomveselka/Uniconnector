@@ -8,12 +8,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tomveselka.uniconnector.response.DocumentVerificationResponseModel;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/stolendocuments")
+@Api(tags="Stolen documents", value="Stolen documents")
 public class StolenDocumentsController {
 
-	@GetMapping(path = "/{number}/{type}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
-	public DocumentVerificationResponseModel checkDocument(@PathVariable String documentNumber, @PathVariable String documentType) {
+	@ApiOperation(value= "${stolenDocuments.full.value}")
+	@GetMapping(path = "/full/{number}/{type}", produces = {MediaType.APPLICATION_JSON_VALUE })
+	public DocumentVerificationResponseModel checkDocumentFullAnswer(@PathVariable String documentNumber, @PathVariable String documentType) {
+		
+		
+		return null;
+	}
+	
+	@ApiOperation(value= "${stolenDocuments.short.value}")
+	@GetMapping(path = "/short/{number}/{type}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public DocumentVerificationResponseModel checkDocumentShortAnswer(@PathVariable String documentNumber, @PathVariable String documentType) {
 		
 		
 		return null;
