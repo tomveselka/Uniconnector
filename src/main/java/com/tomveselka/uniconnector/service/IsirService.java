@@ -7,6 +7,6 @@ import com.tomveselka.uniconnector.response.submodels.IsirVerificationFullRespon
 
 public interface IsirService {
 	String simpleAnswer (GetIsirWsCuzkDataResponse response);
-	IsirVerificationFullResponseClient fullAnswer (GetIsirWsCuzkDataResponse response);
+	IsirVerificationFullResponseClient fullAnswerClient (GetIsirWsCuzkDataResponse response);
 	IsirVerificationFullResponseEmployer fullAnswerEmployer (GetIsirWsCuzkDataResponse response);
 }
