@@ -1,4 +1,4 @@
-package com.tomveselka.uniconnector.httpRequests;
+package com.tomveselka.uniconnector.requests;
 
 import org.junit.jupiter.api.BeforeAll;
 

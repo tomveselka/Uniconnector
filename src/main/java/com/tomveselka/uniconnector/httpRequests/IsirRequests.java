@@ -2,6 +2,7 @@ package com.tomveselka.uniconnector.httpRequests;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
@@ -9,7 +10,7 @@ import com.tomveselka.uniconnector.isirWsdlClasses.GetIsirWsCuzkDataRequest;
 import com.tomveselka.uniconnector.isirWsdlClasses.GetIsirWsCuzkDataResponse;
 //https://isir.justice.cz/isir/help/Popis_WS_2_v1_8.pdf
 
-@Service
+@Component
 public class IsirRequests {
 
 	@Autowired

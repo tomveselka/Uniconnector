@@ -1,6 +1,6 @@
-package com.tomveselka.uniconnector.request.submodels;
+package com.tomveselka.uniconnector.requestModels.submodels;
 
-public class IsirVerificationFullResponseRequestModelEmployer {
+public class FullRequestModelEmployer {
 	private String ico;
 
 	public String getIco() {

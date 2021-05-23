@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tomveselka.uniconnector.httpRequests.IsirRequests;
 import com.tomveselka.uniconnector.isirWsdlClasses.GetIsirWsCuzkDataResponse;
 import com.tomveselka.uniconnector.listsProcessing.IsirListProcessing;
-import com.tomveselka.uniconnector.request.IsirVerificationFullResponseRequestModel;
-import com.tomveselka.uniconnector.response.IsirVerificationResponseModelUniversal;
-import com.tomveselka.uniconnector.response.IsirVerificationFullResponse;
+import com.tomveselka.uniconnector.requestModels.FullRequestModelMain;
+import com.tomveselka.uniconnector.responseModels.IsirVerificationFullResponseMain;
+import com.tomveselka.uniconnector.responseModels.IsirVerificationSingleResponseModelUniversal;
 import com.tomveselka.uniconnector.service.IsirService;
 
 import io.swagger.annotations.Api;
@@ -43,16 +43,16 @@ public class IsirController {
 	//to fix or delete or something
     @ApiOperation(value= "${isir.full.value}")
 	@GetMapping(path = "/full/{input}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public IsirVerificationResponseModelUniversal oneCheck(@PathVariable String input) {
-		IsirVerificationResponseModelUniversal responseModel=new IsirVerificationResponseModelUniversal();
+	public IsirVerificationSingleResponseModelUniversal oneCheck(@PathVariable String input) {
+		IsirVerificationSingleResponseModelUniversal responseModel=new IsirVerificationSingleResponseModelUniversal();
 		ModelMapper modelMapper = new ModelMapper();
 
 		if (input.replace("/", "").length()>8) {			 
-			responseModel=  modelMapper.map(isirServices.fullAnswerClient(isirRequests.checkBirthNumber(input)), IsirVerificationResponseModelUniversal.class);
+			responseModel=  modelMapper.map(isirServices.fullAnswerClient(isirRequests.checkBirthNumber(input)), IsirVerificationSingleResponseModelUniversal.class);
 			System.out.println(responseModel.toString());
 			return responseModel;
 		}else {
-			responseModel=  modelMapper.map(isirServices.fullAnswerEmployer(isirRequests.checkIco(input)), IsirVerificationResponseModelUniversal.class);			
+			responseModel=  modelMapper.map(isirServices.fullAnswerEmployer(isirRequests.checkIco(input)), IsirVerificationSingleResponseModelUniversal.class);			
 			System.out.println(responseModel.toString());
 			return responseModel;
 		}	
@@ -74,7 +74,7 @@ public class IsirController {
 	
     @ApiOperation(value= "${isir.all.value}")
 	@GetMapping(path = "/all", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public IsirVerificationFullResponse fullCheck(@RequestBody IsirVerificationFullResponseRequestModel request) {
+	public IsirVerificationFullResponseMain fullCheck(@RequestBody FullRequestModelMain request) {
 		
 		return listProcessing.processRequestFullList(request);
 	}

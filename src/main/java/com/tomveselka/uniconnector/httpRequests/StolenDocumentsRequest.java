@@ -12,9 +12,11 @@ import java.time.temporal.ChronoUnit;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tomveselka.uniconnector.utils.RegistersEndpoints;
 
+@Service
 public class StolenDocumentsRequest {
 	@Autowired
 	RegistersEndpoints endpoints;
@@ -35,6 +37,6 @@ public class StolenDocumentsRequest {
 		System.out.println(response.statusCode());
 		System.out.println(response.body().toString());
 		
-		return "aaa";
+		return response.body().toString();
 	}
 }

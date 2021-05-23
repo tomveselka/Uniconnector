@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import com.tomveselka.uniconnector.isirWsdlClasses.GetIsirWsCuzkDataResponse;
 import com.tomveselka.uniconnector.isirWsdlClasses.IsirWsCuzkData;
 import com.tomveselka.uniconnector.listsProcessing.IsirListProcessing;
-import com.tomveselka.uniconnector.response.submodels.IsirVerificationFullResponseClient;
-import com.tomveselka.uniconnector.response.submodels.IsirVerificationFullResponseEmployer;
+import com.tomveselka.uniconnector.responseModels.submodels.IsirVerificationFullResponseClient;
+import com.tomveselka.uniconnector.responseModels.submodels.IsirVerificationFullResponseEmployer;
 import com.tomveselka.uniconnector.service.IsirService;
 
 @Service
