@@ -26,22 +26,24 @@ public class IsirListProcessing {
 	@Autowired
 	IsirService isirServices;
 
-	 Logger logger = LoggerFactory.getLogger(IsirListProcessing.class);
-	 
+	Logger logger = LoggerFactory.getLogger(IsirListProcessing.class);
+
 	public IsirVerificationFullResponseMain processRequestFullList(FullRequestModelMain request) {
 
 		ArrayList<FullRequestModelClient> clientInputList = request.getClients();
 		ArrayList<IsirVerificationFullResponseClient> clientResultList = new ArrayList<IsirVerificationFullResponseClient>();
 		for (FullRequestModelClient client : clientInputList) {
 			IsirVerificationFullResponseClient clientResult = isirServices
-					.fullAnswerClient(isirRequests.checkBirthNumber(client.getRc()));
-			logger.info("Result for client with RC {} output is "+clientResult.toString(), client.getRc());
+					.fullAnswerClient(isirRequests.checkBirthNumber(client.getRc()), client.getRc());
+			logger.info("Result for client with RC {} output is " + clientResult.toString(), client.getRc());
+
 			ArrayList<FullRequestModelEmployer> employerInputList = client.getEmployers();
 			ArrayList<IsirVerificationFullResponseEmployer> employerResultsList = new ArrayList<IsirVerificationFullResponseEmployer>();
 			for (FullRequestModelEmployer employer : employerInputList) {
 				IsirVerificationFullResponseEmployer employerResult = isirServices
-						.fullAnswerEmployer(isirRequests.checkIco(employer.getIco()));
-				logger.info("Result for employer with ICO  {}, who is employing client {} output is "+clientResult.toString(),employer.getIco(), client.getRc());
+						.fullAnswerEmployer(isirRequests.checkIco(employer.getIco()), employer.getIco());
+				logger.info("Result for employer with ICO  {}, who is employing client {} output is "
+						+ clientResult.toString(), employer.getIco(), client.getRc());
 				employerResultsList.add(employerResult);
 			}
 			clientResult.setEmployers(employerResultsList);

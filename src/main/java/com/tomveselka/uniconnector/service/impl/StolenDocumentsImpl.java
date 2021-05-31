@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
+import com.tomveselka.uniconnector.dto.ResultSummaryDto;
 import com.tomveselka.uniconnector.httpRequests.StolenDocumentsRequest;
+import com.tomveselka.uniconnector.service.ResultsService;
 import com.tomveselka.uniconnector.service.StolenDocuments;
 import com.tomveselka.uniconnector.xmlParsers.ParseStolenDocumentsXml;
 
@@ -19,6 +21,9 @@ public class StolenDocumentsImpl implements StolenDocuments{
 	StolenDocumentsRequest request;
 	@Autowired
 	ParseStolenDocumentsXml parsers;
+	@Autowired
+	ResultsService resultService;
+	
 
 	public String verifyOneDocument(String number, String type){
 		String result;
@@ -26,9 +31,10 @@ public class StolenDocumentsImpl implements StolenDocuments{
 			result = parsers.parseResponse(request.checkStolenDocumentsDatabase(number, type));
 		} catch (SAXException | IOException | ParserConfigurationException | URISyntaxException
 				| InterruptedException e) {
-			return "verification error";
-		}
-
+			result =  "error";
+		} 
+		ResultSummaryDto summaryDto=new ResultSummaryDto(number, type, result, "DOCS", java.time.LocalDateTime.now(), null);
+		resultService.createRecord(summaryDto);
 		return result;
 	}
 	

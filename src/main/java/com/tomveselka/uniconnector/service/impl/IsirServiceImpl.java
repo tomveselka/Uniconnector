@@ -20,7 +20,7 @@ public class IsirServiceImpl implements IsirService{
 	
 	public String simpleAnswer (GetIsirWsCuzkDataResponse response) {
 		ArrayList <IsirWsCuzkData> dataList=(ArrayList<IsirWsCuzkData>) response.getData();
-		if(null==dataList) {
+		if(0==dataList.size()||null==dataList) {
 			return "N";
 		}else {
 			IsirWsCuzkData data=dataList.get(0);
@@ -41,39 +41,41 @@ public class IsirServiceImpl implements IsirService{
 		}		
 	}
 	
-	public IsirVerificationFullResponseClient fullAnswerClient (GetIsirWsCuzkDataResponse response) {
+	public IsirVerificationFullResponseClient fullAnswerClient (GetIsirWsCuzkDataResponse response, String rc) {
 		ArrayList <IsirWsCuzkData> dataList=(ArrayList<IsirWsCuzkData>) response.getData();
 		IsirVerificationFullResponseClient result = new IsirVerificationFullResponseClient();
-		if(null==dataList) {
-			result.setResult("N");
+		result.setRc(rc);
+		result.setDateTimeOfCheck((java.time.LocalDateTime.now()).toString());
+		if(0==dataList.size()||null==dataList) {
+			result.setResult("N");	
+			logger.info("Result for client with RC {} output is "+result.toString(), result.getRc());
 			return result;
 		}
 		IsirWsCuzkData data=dataList.get(0);		
-		result.setRc(data.getRc());
 		result.setState(data.getDruhStavKonkursu());
 		result.setActive(simpleAnswer(response));
 		result.setResult("S");
-		result.setLink(data.getUrlDetailRizeni());
-		result.setDateTimeOfCheck((java.time.LocalDateTime.now()).toString());
+		result.setLink(data.getUrlDetailRizeni());	
 		logger.info("Result for client with RC {} output is "+result.toString(), result.getRc());
 		System.out.println(result.toString());
 		return result;
 	}
 	
-	public IsirVerificationFullResponseEmployer fullAnswerEmployer (GetIsirWsCuzkDataResponse response) {
+	public IsirVerificationFullResponseEmployer fullAnswerEmployer (GetIsirWsCuzkDataResponse response, String ico) {
 		ArrayList <IsirWsCuzkData> dataList=(ArrayList<IsirWsCuzkData>) response.getData();
 		IsirVerificationFullResponseEmployer result = new IsirVerificationFullResponseEmployer();
-		if(null==dataList) {
+		result.setDateTimeOfCheck((java.time.LocalDateTime.now()).toString());
+		result.setIco(ico);
+		if(0==dataList.size()||null==dataList) {
 			result.setResult("N");
+			logger.info("Result for employer with ICO {} output is "+result.toString(), result.getIco());
 			return result;
 		}
-		IsirWsCuzkData data=dataList.get(0);		
-		result.setIco(data.getIc());
+		IsirWsCuzkData data=dataList.get(0);			
 		result.setState(data.getDruhStavKonkursu());
 		result.setActive(simpleAnswer(response));
 		result.setResult("S");
-		result.setLink(data.getUrlDetailRizeni());
-		result.setDateTimeOfCheck((java.time.LocalDateTime.now()).toString());
+		result.setLink(data.getUrlDetailRizeni());		
 		logger.info("Result for employer with ICO {} output is "+result.toString(), result.getIco());
 		System.out.println(result.toString());
 		return result;

@@ -24,6 +24,7 @@ public class IsirRequests {
 		request.setRc(birthNumber);
 		GetIsirWsCuzkDataResponse response=(GetIsirWsCuzkDataResponse) template.marshalSendAndReceive("https://isir.justice.cz:8443/isir_cuzk_ws/IsirWsCuzkService", request);
 		System.out.println(response);
+		//System.out.println(response.getData());
 		return response;
 	}
 	

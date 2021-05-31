@@ -47,7 +47,7 @@ public class StolenDocumentsController {
 	Logger logger = LoggerFactory.getLogger(IsirController.class);
 	
 	@ApiOperation(value= "${stolenDocuments.full.value}")
-	@GetMapping(path = "/full/{number}/{type}", produces = {MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(path = "/full/{documentNumber}/{documentType}", produces = {MediaType.APPLICATION_JSON_VALUE })
 	public DocumentVerificationSingleResponseModel checkDocumentFullAnswer(@PathVariable String documentNumber, @PathVariable String documentType) {
 		DocumentVerificationSingleResponseModel resultModel = new DocumentVerificationSingleResponseModel();
 		logger.info("Called simple check of one document with input param type {}, number {}", documentType, documentNumber);
@@ -61,7 +61,7 @@ public class StolenDocumentsController {
 	}
 	
 	@ApiOperation(value= "${stolenDocuments.short.value}")
-	@GetMapping(path = "/short/{number}/{type}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(path = "/short/{documentNumber}/{documentType}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public String checkDocumentShortAnswer(@PathVariable String documentNumber, @PathVariable String documentType){
 		logger.info("Called simple check of one document with input param type {}, number {}", documentType, documentNumber);
 		String result=stolendDocumentsService.verifyOneDocument(documentNumber, documentType);
@@ -70,8 +70,8 @@ public class StolenDocumentsController {
 	}
 	
 	@ApiOperation(value= "${stolenDocuments.full.mutliple}")
-	@GetMapping(path = "/multiple", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public DocumentVerificationFullResponseMain checkDocumentMultiple(@RequestBody FullRequestModelMain requestBody) throws SAXException, IOException, ParserConfigurationException, URISyntaxException, InterruptedException {
+	@GetMapping(path = "/all", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public DocumentVerificationFullResponseMain checkDocumentMultiple(@RequestBody FullRequestModelMain requestBody) {
 		DocumentVerificationFullResponseMain result = new DocumentVerificationFullResponseMain();
 		result=processingService.processRequestFullList(requestBody);
 		return result;

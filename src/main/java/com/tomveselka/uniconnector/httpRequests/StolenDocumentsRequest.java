@@ -21,7 +21,7 @@ public class StolenDocumentsRequest {
 	@Autowired
 	RegistersEndpoints endpoints;
 	
-	public String checkStolenDocumentsDatabase(String number, String type) throws URISyntaxException, IOException, InterruptedException {
+	public HttpResponse<String> checkStolenDocumentsDatabase(String number, String type) throws URISyntaxException, IOException, InterruptedException {
 		 String stolenDocumentsLink="https://aplikace.mvcr.cz/neplatne-doklady/doklady.aspx";
 		String uri=stolenDocumentsLink+"?dotaz="+number+"&doklad="+type;
 		// String uri=endpoints.getStolenDocumentsLink()+"?dotaz="+number+"&doklad="+type;
@@ -37,6 +37,6 @@ public class StolenDocumentsRequest {
 		System.out.println(response.statusCode());
 		System.out.println(response.body().toString());
 		
-		return response.body().toString();
+		return response;
 	}
 }

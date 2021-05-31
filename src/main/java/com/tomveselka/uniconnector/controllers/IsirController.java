@@ -48,11 +48,11 @@ public class IsirController {
 		ModelMapper modelMapper = new ModelMapper();
 
 		if (input.replace("/", "").length()>8) {			 
-			responseModel=  modelMapper.map(isirServices.fullAnswerClient(isirRequests.checkBirthNumber(input)), IsirVerificationSingleResponseModelUniversal.class);
+			responseModel=  modelMapper.map(isirServices.fullAnswerClient(isirRequests.checkBirthNumber(input), input), IsirVerificationSingleResponseModelUniversal.class);
 			System.out.println(responseModel.toString());
 			return responseModel;
 		}else {
-			responseModel=  modelMapper.map(isirServices.fullAnswerEmployer(isirRequests.checkIco(input)), IsirVerificationSingleResponseModelUniversal.class);			
+			responseModel=  modelMapper.map(isirServices.fullAnswerEmployer(isirRequests.checkIco(input), input), IsirVerificationSingleResponseModelUniversal.class);		
 			System.out.println(responseModel.toString());
 			return responseModel;
 		}	
