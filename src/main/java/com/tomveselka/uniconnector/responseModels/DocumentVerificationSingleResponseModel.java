@@ -1,9 +1,10 @@
-package com.tomveselka.uniconnector.response;
+package com.tomveselka.uniconnector.responseModels;
 
-public class DocumentVerificationResponseModel {
+public class DocumentVerificationSingleResponseModel {
 	private String number;
 	private String type;
 	private String result;
+	private String dateTimeOfCheck;
 	public String getNumber() {
 		return number;
 	}
@@ -21,5 +22,11 @@ public class DocumentVerificationResponseModel {
 	}
 	public void setResult(String result) {
 		this.result = result;
+	}
+	public String getDateTimeOfCheck() {
+		return dateTimeOfCheck;
+	}
+	public void setDateTimeOfCheck(String dateTimeOfCheck) {
+		this.dateTimeOfCheck = dateTimeOfCheck;
 	}
 }

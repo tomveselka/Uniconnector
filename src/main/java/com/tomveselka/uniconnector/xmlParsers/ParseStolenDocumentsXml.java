@@ -2,11 +2,13 @@ package com.tomveselka.uniconnector.xmlParsers;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.http.HttpResponse;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -15,11 +17,16 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 //https://www.tutorialspoint.com/java_xml/java_dom_parse_document.htm
+@Component
 public class ParseStolenDocumentsXml {
-	public String parseResponse(String xmlResponse) throws SAXException, IOException, ParserConfigurationException {
+	public String parseResponse(HttpResponse<String> xmlResponse) throws SAXException, IOException, ParserConfigurationException {
+		if (200!=xmlResponse.statusCode()) {
+			return "error";
+		}
+		String xmlResponseString=xmlResponse.body().toString();
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(new InputSource(new ByteArrayInputStream(xmlResponse.getBytes("utf-8"))));
+        Document doc = dBuilder.parse(new InputSource(new ByteArrayInputStream(xmlResponseString.getBytes("utf-8"))));
         doc.getDocumentElement().normalize();
         NodeList nList=doc.getElementsByTagName("odpoved");
         Node node=nList.item(0);

@@ -9,7 +9,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
 @SpringBootApplication
-//@ComponentScan(basePackages = "com.tomveselka.uniconnector.main.controllers")
 public class UniConnectorApplication {
     
 	public static void main(String[] args) {

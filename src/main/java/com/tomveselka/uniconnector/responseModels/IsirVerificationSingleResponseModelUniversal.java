@@ -1,17 +1,25 @@
-package com.tomveselka.uniconnector.response.submodels;
+package com.tomveselka.uniconnector.responseModels;
 
-public class IsirVerificationFullResponseEmployer {
+public class IsirVerificationSingleResponseModelUniversal {
+	private String rc;
 	private String ico;
-	//was anything found at all
+
+	// was anything found at all
 	private String result;
-	//is Rizeni still active
+	// is Rizeni still active
 	private String active;
-	//state of proceeding
+	// state of proceeding
 	private String state;
-	//link to information about proceeding
+	// link to information about proceeding
 	private String link;
-	//date of check
+	// date of check
 	private String dateTimeOfCheck;
+	public String getRc() {
+		return rc;
+	}
+	public void setRc(String rc) {
+		this.rc = rc;
+	}
 	public String getIco() {
 		return ico;
 	}
@@ -30,7 +38,6 @@ public class IsirVerificationFullResponseEmployer {
 	public void setActive(String active) {
 		this.active = active;
 	}
-
 	public String getState() {
 		return state;
 	}
@@ -51,7 +58,8 @@ public class IsirVerificationFullResponseEmployer {
 	}
 	@Override
 	public String toString() {
-		return "IsirVerificationFullResponseEmployer [ico=" + ico + ", result=" + result + ", active=" + active
-				+ ", state=" + state + ", link=" + link + ", dateTimeOfCheck=" + dateTimeOfCheck + "]";
+		return "DocumentVerificationResponseModelUniversal [rc=" + rc + ", ico=" + ico + ", result=" + result
+				+ ", active=" + active + ", state=" + state + ", link=" + link + ", dateTimeOfCheck=" + dateTimeOfCheck
+				+ "]";
 	}
 }

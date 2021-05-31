@@ -1,5 +1,8 @@
 package com.tomveselka.uniconnector.utils;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class RegistersEndpoints {
 
 	//https://www.mvcr.cz/clanek/neplatne-doklady-ve-formatu-xml.aspx

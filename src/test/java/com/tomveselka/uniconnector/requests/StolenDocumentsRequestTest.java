@@ -1,4 +1,4 @@
-package com.tomveselka.uniconnector.httpRequests;
+package com.tomveselka.uniconnector.requests;
 
 import org.junit.jupiter.api.BeforeAll;
 
@@ -18,8 +18,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.tomveselka.uniconnector.httpRequests.StolenDocumentsRequest;
 import com.tomveselka.uniconnector.utils.RegistersEndpoints;
+//stolen documents to use 115029329 115048437 115044147
 
-//stolen OP 114963206 114963209 114963213 114963222
 
 
 @ExtendWith(MockitoExtension.class)
@@ -33,7 +33,7 @@ class StolenDocumentsRequestTest {
 	void setUp() {
 		//request=new StolenDocumentsRequest();
 	}
-	
+	/*
 	@Test
 	void callDatabseCheckIfGetRespons() throws URISyntaxException, IOException, InterruptedException {
 		String number="114963209";
@@ -43,6 +43,6 @@ class StolenDocumentsRequestTest {
 		assertNotNull(response);
 
 	}
-	
+	*/
 	
 }
