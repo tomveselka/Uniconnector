@@ -29,8 +29,6 @@ public class ResultsServiceImpl implements ResultsService {
 	@Autowired
 	Utils utils;
 
-	
-
 	Logger logger = LoggerFactory.getLogger(IsirController.class);
 
 	@Override
@@ -66,7 +64,7 @@ public class ResultsServiceImpl implements ResultsService {
 	}
 
 	@Override
-	public List<ResultSummaryDto> getAllRecords(int page, int limit) {		
+	public List<ResultSummaryDto> getAllRecords(int page, int limit) {
 		List<ResultSummaryDto> resultsList = new ArrayList<ResultSummaryDto>();
 		if (page > 0) {
 			page--;
@@ -77,7 +75,7 @@ public class ResultsServiceImpl implements ResultsService {
 		if (records.size() > 0) {
 			for (ResultSummaryEntity record : records) {
 				ModelMapper modelMapper = new ModelMapper();
-				ResultSummaryDto summaryDto = modelMapper.map(record, ResultSummaryDto.class);				
+				ResultSummaryDto summaryDto = modelMapper.map(record, ResultSummaryDto.class);
 				resultsList.add(summaryDto);
 			}
 		}
@@ -96,7 +94,7 @@ public class ResultsServiceImpl implements ResultsService {
 		if (records.size() > 0) {
 			for (ResultSummaryEntity record : records) {
 				ModelMapper modelMapper = new ModelMapper();
-				ResultSummaryDto summaryDto = modelMapper.map(record, ResultSummaryDto.class); 
+				ResultSummaryDto summaryDto = modelMapper.map(record, ResultSummaryDto.class);
 				resultsList.add(summaryDto);
 			}
 		}
