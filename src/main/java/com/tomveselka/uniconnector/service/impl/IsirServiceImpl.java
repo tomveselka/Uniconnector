@@ -4,17 +4,22 @@ import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tomveselka.uniconnector.dto.ResultIsirDto;
+import com.tomveselka.uniconnector.dto.ResultSummaryDto;
 import com.tomveselka.uniconnector.isirWsdlClasses.GetIsirWsCuzkDataResponse;
 import com.tomveselka.uniconnector.isirWsdlClasses.IsirWsCuzkData;
 import com.tomveselka.uniconnector.listsProcessing.IsirListProcessing;
 import com.tomveselka.uniconnector.responseModels.submodels.IsirVerificationFullResponseClient;
 import com.tomveselka.uniconnector.responseModels.submodels.IsirVerificationFullResponseEmployer;
 import com.tomveselka.uniconnector.service.IsirService;
+import com.tomveselka.uniconnector.service.ResultsService;
 
 @Service
 public class IsirServiceImpl implements IsirService{
+
 	
 	Logger logger = LoggerFactory.getLogger(IsirServiceImpl.class);
 	
@@ -25,7 +30,6 @@ public class IsirServiceImpl implements IsirService{
 		}else {
 			IsirWsCuzkData data=dataList.get(0);
 			String stateOfKonkurs=data.getDruhStavKonkursu();
-			System.out.println(stateOfKonkurs);
 			switch(stateOfKonkurs) {
 				case "MYLNÝ ZÁP":
 					return "N";
@@ -57,7 +61,7 @@ public class IsirServiceImpl implements IsirService{
 		result.setResult("S");
 		result.setLink(data.getUrlDetailRizeni());	
 		logger.info("Result for client with RC {} output is "+result.toString(), result.getRc());
-		System.out.println(result.toString());
+		
 		return result;
 	}
 	
@@ -77,7 +81,7 @@ public class IsirServiceImpl implements IsirService{
 		result.setResult("S");
 		result.setLink(data.getUrlDetailRizeni());		
 		logger.info("Result for employer with ICO {} output is "+result.toString(), result.getIco());
-		System.out.println(result.toString());
+		
 		return result;
 	}
 }

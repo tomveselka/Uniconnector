@@ -7,49 +7,56 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
-@Entity(name="summaries")
-public class ResultSummaryEntity implements Serializable{
+@Entity
+@Table(name = "summaries")
+public class ResultSummaryEntity implements Serializable {
 
-	private static final long serialVersionUID = -8078836545859959368L;
-	
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private long id;
-	
-	//RC or ICO or Document number
-	@Column(length=50)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	// Id used to search
+	@Column(length = 50, name = "record_id")
+	private String recordId;
+
+	// RC or ICO or Document number
+	@Column(length = 50, name = "identifier_number")
 	private String identifierNumber;
-	
-	//RC or ICO or Document
-	@Column(length=10)
+
+	// RC or ICO or Document
+	@Column(length = 10, name = "identifier_type")
 	private String identifierType;
-	
-	//result of verification
-	@Column(length=50)
-	private String result;
-	
-	//checked database
-	@Column(length=10)
+
+	// result of verification
+	@Column(length = 50, name = "record_found")
+	private String found;
+
+	// checked database
+	@Column(length = 10, name = "checked_database")
 	private String checkedDatabase;
-	
-	@Column(columnDefinition = "TIMESTAMP")
-	private LocalDateTime  dateOfVerification;
 
-	//https://www.baeldung.com/jpa-one-to-one
-	@OneToOne(mappedBy = "summary", cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private ResultIsirEntity isirEntity;
+	@Column(columnDefinition = "TIMESTAMP", name = "datetime_of_verification")
+	private LocalDateTime dateOfVerification;
 
-	public long getId() {
+	// https://examples.javacodegeeks.com/enterprise-java/jpa-one-one-example/
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "summary_isir_fk")
+	private ResultIsirEntity isir;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -69,12 +76,12 @@ public class ResultSummaryEntity implements Serializable{
 		this.identifierType = identifierType;
 	}
 
-	public String getResult() {
-		return result;
+	public String getFound() {
+		return found;
 	}
 
-	public void setResult(String result) {
-		this.result = result;
+	public void setFound(String result) {
+		this.found = result;
 	}
 
 	public String getCheckedDatabase() {
@@ -85,16 +92,6 @@ public class ResultSummaryEntity implements Serializable{
 		this.checkedDatabase = checkedDatabase;
 	}
 
-
-
-	public ResultIsirEntity getIsirEntity() {
-		return isirEntity;
-	}
-
-	public void setIsirEntity(ResultIsirEntity isirEntity) {
-		this.isirEntity = isirEntity;
-	}
-
 	public LocalDateTime getDateOfVerification() {
 		return dateOfVerification;
 	}
@@ -103,12 +100,29 @@ public class ResultSummaryEntity implements Serializable{
 		this.dateOfVerification = dateOfVerification;
 	}
 
+
+
+	public ResultIsirEntity getIsir() {
+		return isir;
+	}
+
+	public void setIsir(ResultIsirEntity isir) {
+		this.isir = isir;
+	}
+
+	public String getRecordId() {
+		return recordId;
+	}
+
+	public void setRecordId(String recordId) {
+		this.recordId = recordId;
+	}
+
 	@Override
 	public String toString() {
-		return "ResultSummaryEntity [id=" + id + ", identifierNumber=" + identifierNumber + ", identifierType="
-				+ identifierType + ", result=" + result + ", checkedDatabase=" + checkedDatabase
-				+ ", dateOfVerification=" + dateOfVerification + ", isirEntity=" + isirEntity + "]";
+		return "ResultSummaryEntity [recordId=" + recordId + ", identifierNumber=" + identifierNumber
+				+ ", identifierType=" + identifierType + ", found=" + found + ", checkedDatabase=" + checkedDatabase
+				+ ", dateOfVerification=" + dateOfVerification + ", isir=" + isir + "]";
 	}
-	
-	 
+
 }
