@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -73,7 +74,7 @@ public class IsirController {
 	}
 	
     @ApiOperation(value= "${isir.all.value}")
-	@GetMapping(path = "/all", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(path = "/all", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public IsirVerificationFullResponseMain fullCheck(@RequestBody FullRequestModelMain request) {
 		
 		return listProcessing.processRequestFullList(request);
