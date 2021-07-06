@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,10 +54,10 @@ public class StolenDocumentsController {
 		logger.info("Called simple check of one document with input param type {}, number {}", documentType, documentNumber);
 		String result=stolendDocumentsService.verifyOneDocument(documentNumber, documentType);
 		logger.info("Result of check with input param type {}, number {} - result: {}", documentType, documentNumber, result);
-		resultModel.setDateTimeOfCheck((java.time.LocalDateTime.now()).toString());
+		resultModel.setDateTimeOfVerification((java.time.LocalDateTime.now()).toString());
 		resultModel.setNumber(documentNumber);
 		resultModel.setType(documentType);
-		resultModel.setResult(result);
+		resultModel.setFound(result);
 		return resultModel;
 	}
 	
@@ -69,8 +70,8 @@ public class StolenDocumentsController {
 		return result;
 	}
 	
-	@ApiOperation(value= "${stolenDocuments.full.mutliple}")
-	@GetMapping(path = "/all", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@ApiOperation(value= "${stolenDocuments.full.mutliple.value}")
+	@PostMapping(path = "/all", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public DocumentVerificationFullResponseMain checkDocumentMultiple(@RequestBody FullRequestModelMain requestBody) {
 		DocumentVerificationFullResponseMain result = new DocumentVerificationFullResponseMain();
 		result=processingService.processRequestFullList(requestBody);

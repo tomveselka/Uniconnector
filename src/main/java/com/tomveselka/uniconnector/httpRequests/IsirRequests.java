@@ -45,7 +45,7 @@ public class IsirRequests {
 		data.setDruhStavKonkursu("PRAVOMOCNA");
 		data.setUrlDetailRizeni("www.nakopnoutkrecka.cz");
 		dataList.add(data);
-		response.setData(dataList);
+		//response.setData(dataList);
 		saveIsirResponse(response,birthNumber,"RC");
 		return response;
 	}
@@ -65,7 +65,7 @@ public class IsirRequests {
 		data.setDruhStavKonkursu("PRAVOMOCNA");
 		data.setUrlDetailRizeni("www.nakopnoutkrecka.cz");
 		dataList.add(data);
-		response.setData(dataList);
+		//response.setData(dataList);
 		saveIsirResponse(response,ico,"ICO");
 		return response;
 	}
@@ -91,7 +91,7 @@ public class IsirRequests {
 		}
 		summaryDto.setIdentifierType(identifierType);
 		summaryDto.setIdentifierNumber(identifierNumber);
-		summaryDto.setDateOfVerification(java.time.LocalDateTime.now());
+		summaryDto.setDateTimeOfVerification(java.time.LocalDateTime.now());
 		summaryDto.setCheckedDatabase("ISIR");
 		summaryDto.setIsir(isirDto);
 		System.out.println(isirDto);

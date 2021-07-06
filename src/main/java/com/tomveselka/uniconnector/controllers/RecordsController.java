@@ -44,7 +44,7 @@ public class RecordsController {
 		return summaryDto;
 	}
 
-	@ApiOperation(value = "${records.byId.value}")
+	@ApiOperation(value = "${records.byIdentifier.value}")
 	@GetMapping(path = "/getByIdentifier/{identifier}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<ResultSummaryDto> getRecordsByIdentifier(@PathVariable String identifier,
 			@RequestParam(value = "page", defaultValue = "1") int page,

@@ -27,13 +27,10 @@ public class StolenDocumentsImpl implements StolenDocuments{
 
 	public String verifyOneDocument(String number, String type){
 		String result;
-		try {
-			result = parsers.parseResponse(request.checkStolenDocumentsDatabase(number, type));
-		} catch (SAXException | IOException | ParserConfigurationException | URISyntaxException
-				| InterruptedException e) {
-			result =  "error";
-		} 
-		ResultSummaryDto summaryDto=new ResultSummaryDto(number, type, result, "DOCS", java.time.LocalDateTime.now(), null);
+
+		result = parsers.parseResponse(request.checkStolenDocumentsDatabase(number, type));
+
+		ResultSummaryDto summaryDto=new ResultSummaryDto(number, type, result, "DOCS", java.time.LocalDateTime.now(), null, null);
 		resultService.createRecord(summaryDto);
 		return result;
 	}

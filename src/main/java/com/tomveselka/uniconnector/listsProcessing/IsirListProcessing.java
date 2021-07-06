@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tomveselka.uniconnector.controllers.IsirController;
 import com.tomveselka.uniconnector.httpRequests.IsirRequests;
 import com.tomveselka.uniconnector.requestModels.FullRequestModelMain;
 import com.tomveselka.uniconnector.requestModels.submodels.FullRequestModelClient;

@@ -2,8 +2,6 @@ package com.tomveselka.uniconnector.dto;
 
 import java.time.LocalDateTime;
 
-import com.tomveselka.uniconnector.entity.ResultIsirEntity;
-
 public class ResultSummaryDto {
 
 	private String recordId;
@@ -11,8 +9,9 @@ public class ResultSummaryDto {
 	private String identifierType;
 	private String found;
 	private String checkedDatabase;
-	private LocalDateTime dateOfVerification;
+	private LocalDateTime dateTimeOfVerification;
 	private ResultIsirDto isir;
+	private ResultAresDto ares;
 	
 	public String getIdentifierNumber() {
 		return identifierNumber;
@@ -32,14 +31,6 @@ public class ResultSummaryDto {
 	}
 	public void setCheckedDatabase(String checkedDatabase) {
 		this.checkedDatabase = checkedDatabase;
-	}
-
-
-	public LocalDateTime getDateOfVerification() {
-		return dateOfVerification;
-	}
-	public void setDateOfVerification(LocalDateTime dateOfVerification) {
-		this.dateOfVerification = dateOfVerification;
 	}
 
 	public ResultSummaryDto() {
@@ -65,21 +56,36 @@ public class ResultSummaryDto {
 	public void setIsir(ResultIsirDto isir) {
 		this.isir = isir;
 	}
+
+
+	public LocalDateTime getDateTimeOfVerification() {
+		return dateTimeOfVerification;
+	}
+	public void setDateTimeOfVerification(LocalDateTime dateTimeOfVerification) {
+		this.dateTimeOfVerification = dateTimeOfVerification;
+	}
+	public ResultAresDto getAres() {
+		return ares;
+	}
+	public void setAres(ResultAresDto ares) {
+		this.ares = ares;
+	}
 	@Override
 	public String toString() {
 		return "ResultSummaryDto [recordId=" + recordId + ", identifierNumber=" + identifierNumber + ", identifierType="
-				+ identifierType + ", found=" + found + ", checkedDatabase=" + checkedDatabase + ", dateOfVerification="
-				+ dateOfVerification + ", isir=" + isir + "]";
+				+ identifierType + ", found=" + found + ", checkedDatabase=" + checkedDatabase
+				+ ", dateTimeOfVerification=" + dateTimeOfVerification + ", isir=" + isir + ", ares=" + ares + "]";
 	}
 	public ResultSummaryDto(String identifierNumber, String identifierType, String found, String checkedDatabase,
-			LocalDateTime dateOfVerification, ResultIsirDto isir) {
+			LocalDateTime dateTimeOfVerification, ResultIsirDto isir, ResultAresDto ares) {
 		super();
 		this.identifierNumber = identifierNumber;
 		this.identifierType = identifierType;
 		this.found = found;
 		this.checkedDatabase = checkedDatabase;
-		this.dateOfVerification = dateOfVerification;
+		this.dateTimeOfVerification = dateTimeOfVerification;
 		this.isir = isir;
+		this.ares = ares;
 	}
 
 

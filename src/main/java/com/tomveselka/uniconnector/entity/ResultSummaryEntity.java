@@ -45,12 +45,17 @@ public class ResultSummaryEntity implements Serializable {
 	private String checkedDatabase;
 
 	@Column(columnDefinition = "TIMESTAMP", name = "datetime_of_verification")
-	private LocalDateTime dateOfVerification;
+	private LocalDateTime dateTimeOfVerification;
 
 	// https://examples.javacodegeeks.com/enterprise-java/jpa-one-one-example/
 	@OneToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "summary_isir_fk")
 	private ResultIsirEntity isir;
+
+	// https://examples.javacodegeeks.com/enterprise-java/jpa-one-one-example/
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "summary_ares_fk")
+	private ResultAresEntity ares;
 
 	public Long getId() {
 		return id;
@@ -92,16 +97,6 @@ public class ResultSummaryEntity implements Serializable {
 		this.checkedDatabase = checkedDatabase;
 	}
 
-	public LocalDateTime getDateOfVerification() {
-		return dateOfVerification;
-	}
-
-	public void setDateOfVerification(LocalDateTime dateOfVerification) {
-		this.dateOfVerification = dateOfVerification;
-	}
-
-
-
 	public ResultIsirEntity getIsir() {
 		return isir;
 	}
@@ -118,11 +113,27 @@ public class ResultSummaryEntity implements Serializable {
 		this.recordId = recordId;
 	}
 
+	public LocalDateTime getDateTimeOfVerification() {
+		return dateTimeOfVerification;
+	}
+
+	public void setDateTimeOfVerification(LocalDateTime dateTimeOfVerification) {
+		this.dateTimeOfVerification = dateTimeOfVerification;
+	}
+
+	public ResultAresEntity getAres() {
+		return ares;
+	}
+
+	public void setAres(ResultAresEntity ares) {
+		this.ares = ares;
+	}
+
 	@Override
 	public String toString() {
-		return "ResultSummaryEntity [recordId=" + recordId + ", identifierNumber=" + identifierNumber
+		return "ResultSummaryEntity [id=" + id + ", recordId=" + recordId + ", identifierNumber=" + identifierNumber
 				+ ", identifierType=" + identifierType + ", found=" + found + ", checkedDatabase=" + checkedDatabase
-				+ ", dateOfVerification=" + dateOfVerification + ", isir=" + isir + "]";
+				+ ", dateTimeOfVerification=" + dateTimeOfVerification + ", isir=" + isir + ", ares=" + ares + "]";
 	}
 
 }

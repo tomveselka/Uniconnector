@@ -81,6 +81,19 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock -->
+		<dependency>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock</artifactId>
+			<version>2.27.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 
 
 	</dependencies>
@@ -112,20 +125,35 @@
 				<version>0.14.0</version>
 				<executions>
 					<execution>
+						<id>isir-schema</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
+						<configuration>
+							<schemaLanguage>WSDL</schemaLanguage>
+							<generatePackage>com.tomveselka.uniconnector.isirWsdlClasses</generatePackage>
+							<generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+							<schemaDirectory>${project.basedir}/src/main/resources/wsdl/isir</schemaDirectory>
+							<schemaIncludes>
+								<include>*.wsdl</include>
+							</schemaIncludes>
+						</configuration>
+					</execution>
+					<execution>
+						<id>ares-schema</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>${project.basedir}/src/main/resources/xsd/ares</schemaDirectory>
+							<schemaIncludes>
+								<include>*.xsd</include>
+							</schemaIncludes>
+							<generatePackage>com.tomveselka.uniconnector.aresXsdClasses</generatePackage>
+							<generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<schemaLanguage>WSDL</schemaLanguage>
-					<generatePackage>com.tomveselka.uniconnector.isirWsdlClasses</generatePackage>
-					<generateDirectory>${project.basedir}/src/main/java</generateDirectory>
-					<schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
-					<schemaIncludes>
-						<include>*.wsdl</include>
-					</schemaIncludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -34,8 +34,8 @@ public class StolenDocumentsListProcessing {
 			clientResult.setNumber(client.getDocumentNumber());
 			clientResult.setType(client.getDocumentType());
 			logger.info("Called simple check of one document with input param type {}, number {}", client.getDocumentType(), client.getDocumentNumber());
-			clientResult.setResult(stolenDocumentsService.verifyOneDocument(client.getDocumentNumber(), client.getDocumentType()));
-			logger.info("Result of check with input param type {}, number {} - result: {}", clientResult.getResult(), clientResult.getType(), clientResult.getNumber());
+			clientResult.setFound(stolenDocumentsService.verifyOneDocument(client.getDocumentNumber(), client.getDocumentType()));
+			logger.info("Result of check with input param type {}, number {} - result: {}", clientResult.getFound(), clientResult.getType(), clientResult.getNumber());
 			clientResultList.add(clientResult);
 		}
 

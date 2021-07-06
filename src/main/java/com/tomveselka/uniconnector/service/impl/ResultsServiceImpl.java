@@ -49,6 +49,7 @@ public class ResultsServiceImpl implements ResultsService {
 		if (resultEntity != null) {
 			resultDto = modelMapper.map(resultEntity, ResultSummaryDto.class);
 		}
+		logger.info("Retrieved record "+resultDto);
 		return resultDto;
 	}
 
@@ -77,6 +78,7 @@ public class ResultsServiceImpl implements ResultsService {
 				ModelMapper modelMapper = new ModelMapper();
 				ResultSummaryDto summaryDto = modelMapper.map(record, ResultSummaryDto.class);
 				resultsList.add(summaryDto);
+				logger.info("Retrieved record "+summaryDto);
 			}
 		}
 		return resultsList;
