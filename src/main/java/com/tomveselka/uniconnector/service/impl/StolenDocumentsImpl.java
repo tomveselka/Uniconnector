@@ -30,7 +30,7 @@ public class StolenDocumentsImpl implements StolenDocuments{
 
 		result = parsers.parseResponse(request.checkStolenDocumentsDatabase(number, type));
 
-		ResultSummaryDto summaryDto=new ResultSummaryDto(number, type, result, "DOCS", java.time.LocalDateTime.now(), null);
+		ResultSummaryDto summaryDto=new ResultSummaryDto(number, type, result, "DOCS", java.time.LocalDateTime.now(), null, null);
 		resultService.createRecord(summaryDto);
 		return result;
 	}

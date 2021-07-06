@@ -54,10 +54,10 @@ public class StolenDocumentsController {
 		logger.info("Called simple check of one document with input param type {}, number {}", documentType, documentNumber);
 		String result=stolendDocumentsService.verifyOneDocument(documentNumber, documentType);
 		logger.info("Result of check with input param type {}, number {} - result: {}", documentType, documentNumber, result);
-		resultModel.setDateTimeOfCheck((java.time.LocalDateTime.now()).toString());
+		resultModel.setDateTimeOfVerification((java.time.LocalDateTime.now()).toString());
 		resultModel.setNumber(documentNumber);
 		resultModel.setType(documentType);
-		resultModel.setResult(result);
+		resultModel.setFound(result);
 		return resultModel;
 	}
 	

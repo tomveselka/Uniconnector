@@ -1,89 +1,117 @@
-package com.tomveselka.uniconnector.responseModels;
+package com.tomveselka.uniconnector.entity;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
 
-public class AresVerificationFullResponse {
-	private String existsRZP;
-	private String existsInsolvencniRejstrik;
-	private String existsROB;
-	private String existsDPH;
-	private String exitsSpotrebniDan;
-	private String existsEvidenceUpadcuKonkurz;
-	private String existsEvidenceUpadcuVyrovnani;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "summaries_ares")
+public class ResultAresEntity implements Serializable{
 	
-	private LocalDateTime dateTimeOfVerification;
-	private String ico;
-	private String found;
+	private static final long serialVersionUID = 1L;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	@Column(length = 10)
+	private String identifier;
+	
+	@Column(length = 4)
+	private String existsRZP;
+	
+	@Column(length = 4)
+	private String existsInsolvencniRejstrik;
+	
+	@Column(length = 4)
+	private String existsROB;
+	
+	@Column(length = 4)
+	private String existsDPH;
+	
+	@Column(length = 4)
+	private String exitsSpotrebniDan;
+	
+	@Column(length = 4)
+	private String existsEvidenceUpadcuKonkurz;
+	
+	@Column(length = 4)
+	private String existsEvidenceUpadcuVyrovnani;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getIdentifier() {
+		return identifier;
+	}
+
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
+	}
+
 	public String getExistsRZP() {
 		return existsRZP;
 	}
+
 	public void setExistsRZP(String existsRZP) {
 		this.existsRZP = existsRZP;
 	}
+
 	public String getExistsInsolvencniRejstrik() {
 		return existsInsolvencniRejstrik;
 	}
+
 	public void setExistsInsolvencniRejstrik(String existsInsolvencniRejstrik) {
 		this.existsInsolvencniRejstrik = existsInsolvencniRejstrik;
 	}
+
 	public String getExistsROB() {
 		return existsROB;
 	}
+
 	public void setExistsROB(String existsROB) {
 		this.existsROB = existsROB;
 	}
+
 	public String getExistsDPH() {
 		return existsDPH;
 	}
+
 	public void setExistsDPH(String existsDPH) {
 		this.existsDPH = existsDPH;
 	}
+
 	public String getExitsSpotrebniDan() {
 		return exitsSpotrebniDan;
 	}
+
 	public void setExitsSpotrebniDan(String exitsSpotrebniDan) {
 		this.exitsSpotrebniDan = exitsSpotrebniDan;
 	}
+
 	public String getExistsEvidenceUpadcuKonkurz() {
 		return existsEvidenceUpadcuKonkurz;
 	}
+
 	public void setExistsEvidenceUpadcuKonkurz(String existsEvidenceUpadcuKonkurz) {
 		this.existsEvidenceUpadcuKonkurz = existsEvidenceUpadcuKonkurz;
 	}
+
 	public String getExistsEvidenceUpadcuVyrovnani() {
 		return existsEvidenceUpadcuVyrovnani;
 	}
+
 	public void setExistsEvidenceUpadcuVyrovnani(String existsEvidenceUpadcuVyrovnani) {
 		this.existsEvidenceUpadcuVyrovnani = existsEvidenceUpadcuVyrovnani;
 	}
-
-	public String getIco() {
-		return ico;
-	}
-	public void setIco(String ico) {
-		this.ico = ico;
-	}
-	public String getFound() {
-		return found;
-	}
-	public void setFound(String found) {
-		this.found = found;
-	}
-	public LocalDateTime getDateTimeOfVerification() {
-		return dateTimeOfVerification;
-	}
-	public void setDateTimeOfVerification(LocalDateTime dateTimeOfVerification) {
-		this.dateTimeOfVerification = dateTimeOfVerification;
-	}
-	@Override
-	public String toString() {
-		return "AresVerificationFullResponse [existsRZP=" + existsRZP + ", existsInsolvencniRejstrik="
-				+ existsInsolvencniRejstrik + ", existsROB=" + existsROB + ", existsDPH=" + existsDPH
-				+ ", exitsSpotrebniDan=" + exitsSpotrebniDan + ", existsEvidenceUpadcuKonkurz="
-				+ existsEvidenceUpadcuKonkurz + ", existsEvidenceUpadcuVyrovnani=" + existsEvidenceUpadcuVyrovnani
-				+ ", dateTimeOfVerification=" + dateTimeOfVerification + ", ico=" + ico + ", found=" + found + "]";
-	}
-
-	
-	
 }

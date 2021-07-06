@@ -24,9 +24,8 @@ public class AresController {
     @ApiOperation(value= "${isir.full.value}")
 	@GetMapping(path = "/full/{ico}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public AresVerificationFullResponse oneCheckStandard(@PathVariable String ico) {
-    	aresService.fullAnswer(ico);
-    	return null;
-
-
+    	AresVerificationFullResponse fullResponse= new AresVerificationFullResponse();
+    	fullResponse=aresService.fullAnswer(ico);
+    	return fullResponse;
 	}
 }

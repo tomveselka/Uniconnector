@@ -3,7 +3,7 @@ package com.tomveselka.uniconnector.responseModels.submodels;
 public class IsirVerificationFullResponseEmployer {
 	private String ico;
 	//was anything found at all
-	private String result;
+	private String found;
 	//is Rizeni still active
 	private String active;
 	//state of proceeding
@@ -11,19 +11,14 @@ public class IsirVerificationFullResponseEmployer {
 	//link to information about proceeding
 	private String link;
 	//date of check
-	private String dateTimeOfCheck;
+	private String dateTimeOfVerification;
 	public String getIco() {
 		return ico;
 	}
 	public void setIco(String ico) {
 		this.ico = ico;
 	}
-	public String getResult() {
-		return result;
-	}
-	public void setResult(String result) {
-		this.result = result;
-	}
+
 	public String getActive() {
 		return active;
 	}
@@ -43,15 +38,22 @@ public class IsirVerificationFullResponseEmployer {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	public String getDateTimeOfCheck() {
-		return dateTimeOfCheck;
-	}
-	public void setDateTimeOfCheck(String dateTimeOfCheck) {
-		this.dateTimeOfCheck = dateTimeOfCheck;
-	}
 	@Override
 	public String toString() {
-		return "IsirVerificationFullResponseEmployer [ico=" + ico + ", result=" + result + ", active=" + active
-				+ ", state=" + state + ", link=" + link + ", dateTimeOfCheck=" + dateTimeOfCheck + "]";
+		return "IsirVerificationFullResponseEmployer [ico=" + ico + ", found=" + found + ", active=" + active
+				+ ", state=" + state + ", link=" + link + ", dateTimeOfVerification=" + dateTimeOfVerification + "]";
 	}
+	public String getDateTimeOfVerification() {
+		return dateTimeOfVerification;
+	}
+	public void setDateTimeOfVerification(String dateTimeOfVerification) {
+		this.dateTimeOfVerification = dateTimeOfVerification;
+	}
+	public String getFound() {
+		return found;
+	}
+	public void setFound(String found) {
+		this.found = found;
+	}
+
 }

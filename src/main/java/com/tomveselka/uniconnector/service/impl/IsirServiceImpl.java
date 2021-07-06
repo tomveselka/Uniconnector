@@ -49,16 +49,16 @@ public class IsirServiceImpl implements IsirService{
 		ArrayList <IsirWsCuzkData> dataList=(ArrayList<IsirWsCuzkData>) response.getData();
 		IsirVerificationFullResponseClient result = new IsirVerificationFullResponseClient();
 		result.setRc(rc);
-		result.setDateTimeOfCheck((java.time.LocalDateTime.now()).toString());
+		result.setDateTimeOfVerification((java.time.LocalDateTime.now()).toString());
 		if(0==dataList.size()||null==dataList) {
-			result.setResult("N");	
+			result.setFound("N");	
 			logger.info("Result for client with RC {} output is "+result.toString(), result.getRc());
 			return result;
 		}
 		IsirWsCuzkData data=dataList.get(0);		
 		result.setState(data.getDruhStavKonkursu());
 		result.setActive(simpleAnswer(response));
-		result.setResult("S");
+		result.setFound("S");
 		result.setLink(data.getUrlDetailRizeni());	
 		logger.info("Result for client with RC {} output is "+result.toString(), result.getRc());
 		
@@ -68,17 +68,17 @@ public class IsirServiceImpl implements IsirService{
 	public IsirVerificationFullResponseEmployer fullAnswerEmployer (GetIsirWsCuzkDataResponse response, String ico) {
 		ArrayList <IsirWsCuzkData> dataList=(ArrayList<IsirWsCuzkData>) response.getData();
 		IsirVerificationFullResponseEmployer result = new IsirVerificationFullResponseEmployer();
-		result.setDateTimeOfCheck((java.time.LocalDateTime.now()).toString());
+		result.setDateTimeOfVerification((java.time.LocalDateTime.now()).toString());
 		result.setIco(ico);
 		if(0==dataList.size()||null==dataList) {
-			result.setResult("N");
+			result.setFound("N");
 			logger.info("Result for employer with ICO {} output is "+result.toString(), result.getIco());
 			return result;
 		}
 		IsirWsCuzkData data=dataList.get(0);			
 		result.setState(data.getDruhStavKonkursu());
 		result.setActive(simpleAnswer(response));
-		result.setResult("S");
+		result.setFound("S");
 		result.setLink(data.getUrlDetailRizeni());		
 		logger.info("Result for employer with ICO {} output is "+result.toString(), result.getIco());
 		

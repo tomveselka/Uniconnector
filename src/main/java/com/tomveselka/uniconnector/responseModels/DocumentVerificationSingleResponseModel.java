@@ -3,8 +3,8 @@ package com.tomveselka.uniconnector.responseModels;
 public class DocumentVerificationSingleResponseModel {
 	private String number;
 	private String type;
-	private String result;
-	private String dateTimeOfCheck;
+	private String found;
+	private String dateTimeOfVerification;
 	public String getNumber() {
 		return number;
 	}
@@ -17,16 +17,18 @@ public class DocumentVerificationSingleResponseModel {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getResult() {
-		return result;
+
+	public String getDateTimeOfVerification() {
+		return dateTimeOfVerification;
 	}
-	public void setResult(String result) {
-		this.result = result;
+	public void setDateTimeOfVerification(String dateTimeOfVerification) {
+		this.dateTimeOfVerification = dateTimeOfVerification;
 	}
-	public String getDateTimeOfCheck() {
-		return dateTimeOfCheck;
+	public String getFound() {
+		return found;
 	}
-	public void setDateTimeOfCheck(String dateTimeOfCheck) {
-		this.dateTimeOfCheck = dateTimeOfCheck;
+	public void setFound(String found) {
+		this.found = found;
 	}
+
 }

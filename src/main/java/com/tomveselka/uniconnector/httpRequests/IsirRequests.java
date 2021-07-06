@@ -91,7 +91,7 @@ public class IsirRequests {
 		}
 		summaryDto.setIdentifierType(identifierType);
 		summaryDto.setIdentifierNumber(identifierNumber);
-		summaryDto.setDateOfVerification(java.time.LocalDateTime.now());
+		summaryDto.setDateTimeOfVerification(java.time.LocalDateTime.now());
 		summaryDto.setCheckedDatabase("ISIR");
 		summaryDto.setIsir(isirDto);
 		System.out.println(isirDto);

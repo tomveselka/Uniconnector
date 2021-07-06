@@ -13,7 +13,7 @@ public class IsirVerificationSingleResponseModelUniversal {
 	// link to information about proceeding
 	private String link;
 	// date of check
-	private String dateTimeOfCheck;
+	private String dateTimeOfVerification;
 	public String getRc() {
 		return rc;
 	}
@@ -50,16 +50,17 @@ public class IsirVerificationSingleResponseModelUniversal {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	public String getDateTimeOfCheck() {
-		return dateTimeOfCheck;
+	public String getDateTimeOfVerification() {
+		return dateTimeOfVerification;
 	}
-	public void setDateTimeOfCheck(String dateTimeOfCheck) {
-		this.dateTimeOfCheck = dateTimeOfCheck;
+	public void setDateTimeOfVerification(String dateTimeOfVerification) {
+		this.dateTimeOfVerification = dateTimeOfVerification;
 	}
 	@Override
 	public String toString() {
-		return "DocumentVerificationResponseModelUniversal [rc=" + rc + ", ico=" + ico + ", result=" + result
-				+ ", active=" + active + ", state=" + state + ", link=" + link + ", dateTimeOfCheck=" + dateTimeOfCheck
-				+ "]";
+		return "IsirVerificationSingleResponseModelUniversal [rc=" + rc + ", ico=" + ico + ", result=" + result
+				+ ", active=" + active + ", state=" + state + ", link=" + link + ", dateTimeOfVerification="
+				+ dateTimeOfVerification + "]";
 	}
+
 }
