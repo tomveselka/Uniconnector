@@ -5,7 +5,7 @@ public class IsirVerificationSingleResponseModelUniversal {
 	private String ico;
 
 	// was anything found at all
-	private String result;
+	private String found;
 	// is Rizeni still active
 	private String active;
 	// state of proceeding
@@ -26,12 +26,7 @@ public class IsirVerificationSingleResponseModelUniversal {
 	public void setIco(String ico) {
 		this.ico = ico;
 	}
-	public String getResult() {
-		return result;
-	}
-	public void setResult(String result) {
-		this.result = result;
-	}
+
 	public String getActive() {
 		return active;
 	}
@@ -56,11 +51,18 @@ public class IsirVerificationSingleResponseModelUniversal {
 	public void setDateTimeOfVerification(String dateTimeOfVerification) {
 		this.dateTimeOfVerification = dateTimeOfVerification;
 	}
+	public String getFound() {
+		return found;
+	}
+	public void setFound(String found) {
+		this.found = found;
+	}
 	@Override
 	public String toString() {
-		return "IsirVerificationSingleResponseModelUniversal [rc=" + rc + ", ico=" + ico + ", result=" + result
+		return "IsirVerificationSingleResponseModelUniversal [rc=" + rc + ", ico=" + ico + ", found=" + found
 				+ ", active=" + active + ", state=" + state + ", link=" + link + ", dateTimeOfVerification="
 				+ dateTimeOfVerification + "]";
 	}
+
 
 }

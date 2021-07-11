@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiOperation;
 //https://stackoverflow.com/questions/2857081/how-can-i-tell-jaxb-maven-to-generate-multiple-schema-packages
 @RestController
 @RequestMapping("ares")
-@Api(tags="ARES", value="ARES")
+@Api(tags="ARES verification", value="ARES verification")
 public class AresController {
 
 	@Autowired

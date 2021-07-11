@@ -4,18 +4,13 @@ import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tomveselka.uniconnector.dto.ResultIsirDto;
-import com.tomveselka.uniconnector.dto.ResultSummaryDto;
 import com.tomveselka.uniconnector.isirWsdlClasses.GetIsirWsCuzkDataResponse;
 import com.tomveselka.uniconnector.isirWsdlClasses.IsirWsCuzkData;
-import com.tomveselka.uniconnector.listsProcessing.IsirListProcessing;
 import com.tomveselka.uniconnector.responseModels.submodels.IsirVerificationFullResponseClient;
 import com.tomveselka.uniconnector.responseModels.submodels.IsirVerificationFullResponseEmployer;
 import com.tomveselka.uniconnector.service.IsirService;
-import com.tomveselka.uniconnector.service.ResultsService;
 
 @Service
 public class IsirServiceImpl implements IsirService{

@@ -41,7 +41,7 @@ public class ResultIsirEntity implements Serializable {
 	private String state;
 	
 	// link to information about proceeding
-	@Column(length = 50)
+	@Column(length = 255)
 	private String link;
 	
 
