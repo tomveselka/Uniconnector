@@ -30,7 +30,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("stolendocuments")
-@Api(tags="Stolen documents", value="Stolen documents")
+@Api(tags="Stolen Documents verification", value="Stolen Documents verification")
 public class StolenDocumentsController {
 
 	@Autowired

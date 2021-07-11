@@ -38,11 +38,7 @@ public class IsirVerificationFullResponseEmployer {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	@Override
-	public String toString() {
-		return "IsirVerificationFullResponseEmployer [ico=" + ico + ", found=" + found + ", active=" + active
-				+ ", state=" + state + ", link=" + link + ", dateTimeOfVerification=" + dateTimeOfVerification + "]";
-	}
+
 	public String getDateTimeOfVerification() {
 		return dateTimeOfVerification;
 	}
@@ -55,5 +51,12 @@ public class IsirVerificationFullResponseEmployer {
 	public void setFound(String found) {
 		this.found = found;
 	}
+	@Override
+	public String toString() {
+		return "IsirVerificationFullResponseEmployer [ico=" + ico + ", found=" + found + ", active=" + active
+				+ ", state=" + state + ", link=" + link + ", dateTimeOfVerification=" + dateTimeOfVerification + "]";
+	}
+
+
 
 }

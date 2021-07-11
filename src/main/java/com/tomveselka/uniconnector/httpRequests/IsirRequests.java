@@ -31,14 +31,14 @@ public class IsirRequests {
 	private WebServiceTemplate template;
 
 	public GetIsirWsCuzkDataResponse checkBirthNumber(String birthNumber) {
-		/*
+		
 		template = new WebServiceTemplate(marshaller);
 		GetIsirWsCuzkDataRequest request = new GetIsirWsCuzkDataRequest();
 		request.setRc(birthNumber);
 		GetIsirWsCuzkDataResponse response = (GetIsirWsCuzkDataResponse) template
 				.marshalSendAndReceive("https://isir.justice.cz:8443/isir_cuzk_ws/IsirWsCuzkService", request);
 		saveIsirResponse(response,birthNumber,"RC");
-		*/
+		/*
 		GetIsirWsCuzkDataResponse response=new GetIsirWsCuzkDataResponse();
 		ArrayList<IsirWsCuzkData> dataList= new ArrayList<IsirWsCuzkData>();
 		IsirWsCuzkData data = new IsirWsCuzkData();
@@ -47,18 +47,20 @@ public class IsirRequests {
 		dataList.add(data);
 		//response.setData(dataList);
 		saveIsirResponse(response,birthNumber,"RC");
+		*/
 		return response;
 	}
 
 	public GetIsirWsCuzkDataResponse checkIco(String ico) {
-		/*
+		
 		template = new WebServiceTemplate(marshaller);
 		GetIsirWsCuzkDataRequest request = new GetIsirWsCuzkDataRequest();
 		request.setIc(ico);
 		GetIsirWsCuzkDataResponse response = (GetIsirWsCuzkDataResponse) template
 				.marshalSendAndReceive("https://isir.justice.cz:8443/isir_cuzk_ws/IsirWsCuzkService", request);
 		saveIsirResponse(response,ico,"ICO");
-		*/
+		
+		/*
 		GetIsirWsCuzkDataResponse response=new GetIsirWsCuzkDataResponse();
 		ArrayList<IsirWsCuzkData> dataList= new ArrayList<IsirWsCuzkData>();
 		IsirWsCuzkData data = new IsirWsCuzkData();
@@ -66,7 +68,7 @@ public class IsirRequests {
 		data.setUrlDetailRizeni("www.nakopnoutkrecka.cz");
 		dataList.add(data);
 		//response.setData(dataList);
-		saveIsirResponse(response,ico,"ICO");
+		saveIsirResponse(response,ico,"ICO");*/
 		return response;
 	}
 

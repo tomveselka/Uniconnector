@@ -12,6 +12,7 @@
 	<groupId>com.tomveselka</groupId>
 	<artifactId>UniConnector</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>UniConnector</name>
 	<description>Connector API to connect to various government registers</description>
 	<properties>
@@ -65,6 +66,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
 			<version>2.3.0</version>
@@ -113,6 +119,7 @@
 		</profile>
 	</profiles>
 	<build>
+		<finalName>uniconnector</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
