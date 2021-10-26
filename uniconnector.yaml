@@ -1,0 +1,507 @@
+swagger: '2.0'
+info:
+  description: Describes API for checking Database of stolen documents, ISIR and ARES
+  version: 1.0.0
+  title: Uniconnector API
+  contact:
+    name: Tomáš Veselý
+    url: https://github.com/tomveselka
+host: localhost:8008
+tags:
+  - name: ARES verification
+    description: Ares Controller
+  - name: ISIR verification
+    description: Isir Controller
+  - name: Records of results
+    description: Records Controller
+  - name: Stolen Documents verification
+    description: Stolen Documents Controller
+paths:
+  /uniconnector/ares/full/{ico}:
+    get:
+      tags:
+        - ARES verification
+      summary: Returns full response about checked ICO/RC
+      operationId: oneCheckStandardUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: ico
+          in: path
+          description: ico
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/AresVerificationFullResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /uniconnector/isir/all:
+    post:
+      tags:
+        - ISIR verification
+      summary: Receives all clients and incomes at ones and recieves results for all of them
+      operationId: fullCheckUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/FullRequestModelMain'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/IsirVerificationFullResponseMain'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /uniconnector/isir/full/{input}:
+    get:
+      tags:
+        - ISIR verification
+      summary: Returns full response about checked ICO/RC
+      operationId: oneCheckUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: input
+          in: path
+          description: input
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/IsirVerificationSingleResponseModelUniversal'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /uniconnector/isir/simple/{input}:
+    get:
+      tags:
+        - ISIR verification
+      summary: Returns just string answer yes/no
+      operationId: oneCheckSimpleUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: input
+          in: path
+          description: input
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /uniconnector/records/getAll:
+    get:
+      tags:
+        - Records of results
+      summary: Returns all records in the database
+      operationId: getAllRecordsUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: limit
+          in: query
+          description: limit
+          required: false
+          type: integer
+          default: 20
+          format: int32
+        - name: page
+          in: query
+          description: page
+          required: false
+          type: integer
+          default: 1
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ResultSummaryDto'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /uniconnector/records/getByIdentifier/{identifier}:
+    get:
+      tags:
+        - Records of results
+      summary: Returns all records verified using same Identifier (ex. RC, ICO, Document number)
+      operationId: getRecordsByIdentifierUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: identifier
+          in: path
+          description: identifier
+          required: true
+          type: string
+        - name: limit
+          in: query
+          description: limit
+          required: false
+          type: integer
+          default: 20
+          format: int32
+        - name: page
+          in: query
+          description: page
+          required: false
+          type: integer
+          default: 1
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ResultSummaryDto'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /uniconnector/records/getByRecordId/{recordID}:
+    get:
+      tags:
+        - Records of results
+      summary: Returns one record by his record id
+      operationId: getRecordByRecordIdUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: recordID
+          in: path
+          description: recordID
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ResultSummaryDto'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /uniconnector/stolendocuments/all:
+    post:
+      tags:
+        - Stolen Documents verification
+      summary: Checks all RC sent in request body
+      operationId: checkDocumentMultipleUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: requestBody
+          description: requestBody
+          required: true
+          schema:
+            $ref: '#/definitions/FullRequestModelMain'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/DocumentVerificationFullResponseMain'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /uniconnector/stolendocuments/full/{documentNumber}/{documentType}:
+    get:
+      tags:
+        - Stolen Documents verification
+      summary: Returns full answer with date of check and number of checked document
+      operationId: checkDocumentFullAnswerUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: documentNumber
+          in: path
+          description: documentNumber
+          required: true
+          type: string
+        - name: documentType
+          in: path
+          description: documentType
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/DocumentVerificationSingleResponseModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /uniconnector/stolendocuments/short/{documentNumber}/{documentType}:
+    get:
+      tags:
+        - Stolen Documents verification
+      summary: Returns just string answer yes/no
+      operationId: checkDocumentShortAnswerUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: documentNumber
+          in: path
+          description: documentNumber
+          required: true
+          type: string
+        - name: documentType
+          in: path
+          description: documentType
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  AresVerificationFullResponse:
+    type: object
+    properties:
+      dateTimeOfVerification:
+        type: string
+        format: date-time
+      existsDPH:
+        type: string
+      existsEvidenceUpadcuKonkurz:
+        type: string
+      existsEvidenceUpadcuVyrovnani:
+        type: string
+      existsInsolvencniRejstrik:
+        type: string
+      existsROB:
+        type: string
+      existsRZP:
+        type: string
+      exitsSpotrebniDan:
+        type: string
+      found:
+        type: string
+      ico:
+        type: string
+    title: AresVerificationFullResponse
+  DocumentVerificationFullResponseMain:
+    type: object
+    properties:
+      clients:
+        type: array
+        items:
+          $ref: '#/definitions/DocumentVerificationSingleResponseModel'
+    title: DocumentVerificationFullResponseMain
+  DocumentVerificationSingleResponseModel:
+    type: object
+    properties:
+      dateTimeOfVerification:
+        type: string
+      found:
+        type: string
+      number:
+        type: string
+      type:
+        type: string
+    title: DocumentVerificationSingleResponseModel
+  FullRequestModelClient:
+    type: object
+    properties:
+      documentNumber:
+        type: string
+      documentType:
+        type: string
+      employers:
+        type: array
+        items:
+          $ref: '#/definitions/FullRequestModelEmployer'
+      rc:
+        type: string
+    title: FullRequestModelClient
+  FullRequestModelEmployer:
+    type: object
+    properties:
+      ico:
+        type: string
+    title: FullRequestModelEmployer
+  FullRequestModelMain:
+    type: object
+    properties:
+      clients:
+        type: array
+        items:
+          $ref: '#/definitions/FullRequestModelClient'
+    title: FullRequestModelMain
+  IsirVerificationFullResponseClient:
+    type: object
+    properties:
+      active:
+        type: string
+      dateTimeOfVerification:
+        type: string
+      employers:
+        type: array
+        items:
+          $ref: '#/definitions/IsirVerificationFullResponseEmployer'
+      found:
+        type: string
+      link:
+        type: string
+      rc:
+        type: string
+      state:
+        type: string
+    title: IsirVerificationFullResponseClient
+  IsirVerificationFullResponseEmployer:
+    type: object
+    properties:
+      active:
+        type: string
+      dateTimeOfVerification:
+        type: string
+      found:
+        type: string
+      ico:
+        type: string
+      link:
+        type: string
+      state:
+        type: string
+    title: IsirVerificationFullResponseEmployer
+  IsirVerificationFullResponseMain:
+    type: object
+    properties:
+      clients:
+        type: array
+        items:
+          $ref: '#/definitions/IsirVerificationFullResponseClient'
+    title: IsirVerificationFullResponseMain
+  IsirVerificationSingleResponseModelUniversal:
+    type: object
+    properties:
+      active:
+        type: string
+      dateTimeOfVerification:
+        type: string
+      found:
+        type: string
+      ico:
+        type: string
+      link:
+        type: string
+      rc:
+        type: string
+      state:
+        type: string
+    title: IsirVerificationSingleResponseModelUniversal
+  ResultAresDto:
+    type: object
+    properties:
+      existsDPH:
+        type: string
+      existsEvidenceUpadcuKonkurz:
+        type: string
+      existsEvidenceUpadcuVyrovnani:
+        type: string
+      existsInsolvencniRejstrik:
+        type: string
+      existsROB:
+        type: string
+      existsRZP:
+        type: string
+      exitsSpotrebniDan:
+        type: string
+      identifier:
+        type: string
+    title: ResultAresDto
+  ResultIsirDto:
+    type: object
+    properties:
+      active:
+        type: string
+      found:
+        type: string
+      identifier:
+        type: string
+      link:
+        type: string
+      state:
+        type: string
+    title: ResultIsirDto
+  ResultSummaryDto:
+    type: object
+    properties:
+      ares:
+        $ref: '#/definitions/ResultAresDto'
+      checkedDatabase:
+        type: string
+      dateTimeOfVerification:
+        type: string
+        format: date-time
+      found:
+        type: string
+      identifierNumber:
+        type: string
+      identifierType:
+        type: string
+      isir:
+        $ref: '#/definitions/ResultIsirDto'
+      recordId:
+        type: string
+    title: ResultSummaryDto
