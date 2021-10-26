@@ -48,9 +48,9 @@ public class SpringFoxConfig {
 	    return new ApiInfo(
 	      "Uniconnector API", 
 	      "Describes API for checking Database of stolen documents, ISIR and ARES", 
+	      "1.0.0", 
 	      null, 
-	      null, 
-	      new Contact(null, null, null), 
+	      new Contact("Tomáš Veselý", "https://github.com/tomveselka", null), 
 	      null, null, Collections.emptyList());
 	}
 
